@@ -1,0 +1,42 @@
+sort,param,type,label
+1,beta[1],1,beta[1] (Constant)
+2,beta[1],2,
+3,beta[2],1,beta[2] (PPI)
+4,beta[2],2,
+5,beta[3],1,beta[3] (Rural population)
+6,beta[3],2,
+7,beta[4],1,beta[4] (Share of Hispanic)
+8,beta[4],2, 
+9,beta[5],1,beta[5] (Share of Blacks)
+10,beta[5],2, 
+11,beta[6],1,beta[6] (Population over 65)
+12,beta[6],2, 
+13,beta[7],1,beta[7] (Prevalence of obesity)
+14,beta[7],2, 
+15,beta[8],1,beta[8] (Prevalence of smoking)
+16,beta[8],2, 
+17,beta[9],1,beta[9] (Prevalence of asthma)
+18,beta[9],2, 
+19,beta[10],1,beta[10] (Heart disease deaths)
+20,beta[10],2, 
+21,beta[11],1,"beta[11] (Number of active physicians per 100,000)"
+22,beta[11],2, 
+23,beta[12],1,beta[12] (Population density)
+24,beta[12],2, 
+25,beta[13],1,beta[13] (Below the poverty line)
+26,beta[13],2,
+27,gamma,1,gamma (removal rate)
+28,gamma,2,
+29,mu,1,mu (underreporting)
+30,mu,2,
+31,delta[1],1,delta[1] (underrep: Constant)
+32,delta[1],2,
+33,delta[2],1,delta[2] (underrep: Negative tests per capita)
+34,delta[2],2,
+35,delta[3],1,delta[3] (underreporting: Population per physician)
+36,delta[3],2,
+37,r,1,r
+38,r,2,
+39,xi,1,xi
+40,xi,2,
+41,DIC,3,DIC
