@@ -37,7 +37,7 @@ Shvetsova, Olga, Andrei Zhirnov, Frank Giannelli, Michael Catalano, and Olivia C
 ## Code
 */code/modelV.R* estimates model 1 (model 4 without additional control variables)
 
-*/code/modelW.R*estimates model 2 (model 3 without additional control variables)
+*/code/modelW.R* estimates model 2 (model 3 without additional control variables)
 
 */code/modelX.R* estimates model 3 (model 4 with the underreporting parameter fixed at 1)
 
