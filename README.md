@@ -3,7 +3,7 @@
 Shvetsova, Olga, Andrei Zhirnov, Frank Giannelli, Michael Catalano, and Olivia Catalano. 2021. "Governor's Party, Policies, and COVID-19 Outcomes: Further Evidence of an Effect." *American Journal of Preventive Medicine.* [doi:10.1016/j.amepre.2021.09.003](https://doi.org/10.1016/j.amepre.2021.09.003)
 
 ## Data-files
-**PM_data.RData** includes 2 objects of class "data.frame":
+**/data/PM_data.RData** includes 2 objects of class "data.frame":
 
 **csts.df**: state-level variables that vary by day
 * state: state abbreviation
