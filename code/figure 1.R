@@ -109,7 +109,7 @@ pic <- ggplot(results, aes(x=date)) +
   geom_ribbon(aes(ymin=lbm, ymax=ubm, group=interaction(example,state,lev.ppi)), fill="grey50", alpha=0.7) +
   geom_ribbon(aes(ymin=lb, ymax=ub, group=interaction(example,state,lev.ppi)), fill="grey50", alpha=0.3) +  
   geom_line(mapping=aes(y=ncases.re, color="Observed cases")) +
-  geom_line(mapping=aes(y=ncases.sm, color="Observed cases"), size=1) +
+  geom_line(mapping=aes(y=ncases.sm, color="Observed cases"), linewidth=1) +
   geom_point(aes(y=marked, shape=lev.ppi), size=3) +
   scale_x_date(date_labels="%b%e") +
   scale_y_continuous("New cases per million", trans="log", breaks=c(1,10,100,1000,10000), labels=scales::label_comma(accuracy=1)) +
@@ -118,3 +118,18 @@ pic <- ggplot(results, aes(x=date)) +
   scale_shape_manual(breaks=c("0.20","0.70"), values=c(0,15)) +
   facet_wrap(vars(example), ncol=2, scales="free_x") + theme(legend.position="bottom") 
 ggsave(file.path(outdir,"figure-1.tiff"), pic, height=6, width=11, compression="lzw")
+
+## for display
+pic <- ggplot(results, aes(x=date)) + 
+  geom_ribbon(aes(ymin=lbm, ymax=ubm, group=interaction(example,state,lev.ppi)), fill="grey50", alpha=0.7) +
+  geom_ribbon(aes(ymin=lb, ymax=ub, group=interaction(example,state,lev.ppi)), fill="grey50", alpha=0.3) +  
+  geom_line(mapping=aes(y=ncases.re, color="Observed cases")) +
+  geom_line(mapping=aes(y=ncases.sm, color="Observed cases"), linewidth=1) +
+  geom_point(aes(y=marked, shape=lev.ppi), size=3) +
+  scale_x_date(date_labels="%b%e") +
+  scale_y_continuous("New cases per million", trans="log", breaks=c(1,10,100,1000,10000), labels=scales::label_comma(accuracy=1)) +
+  scale_color_manual(breaks="Observed cases", values="darkblue") +
+  labs(x=element_blank(), color=element_blank(), shape="Assumed Protective Policy Index") + 
+  scale_shape_manual(breaks=c("0.20","0.70"), values=c(0,15)) +
+  facet_wrap(vars(example), ncol=2, scales="free_x") + theme(legend.position="bottom") 
+ggsave("images/figure-1.png", pic, height=6, width=11)

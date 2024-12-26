@@ -45,7 +45,7 @@ bulk <- lapply(states, function(j) {
 bulk <- do.call("rbind", bulk)
 sample <- merge(sample, bulk, by=c("state","tid"))
 
-## PPi at peaks
+## PPI at peaks
 peaks <- aggregate(ncases.sm ~ state, data=subset(sample, date >= start.date & date <= end.date), FUN=max)
 peaks <- merge(sample,peaks)
 peaks <- merge(peaks, cs.df, by="state")
@@ -68,6 +68,15 @@ pic <- ggplot(peaks.comb, aes(x=value, y=gov))+
                                                           "ncases.sm.re"="The highest 7-day average number of cases per 10,000"))) +
   theme(legend.position="none", axis.ticks.y=element_blank(), axis.text.y=element_text(angle=90, hjust=0.5) )
 ggsave(file.path(outdir, "figure-3.tiff"), pic, height=4, width=10, compression="lzw")
+
+pic <- ggplot(peaks.comb, aes(x=value, y=gov))+ 
+  geom_boxplot(width=0.25)+
+  geom_point(aes(x=mean, y=gov), data=means, shape=15, size=5, color="darkblue") +
+  labs(x=element_blank(), y="Governor", caption="Blue squares indicate average values.") +
+  facet_wrap(vars(type), scales="free_x", ncol=2, labeller=labeller(type=c("ppi"="Protective Policy Index at the peak of the pandemic", 
+                                                                           "ncases.sm.re"="The highest 7-day average number of cases per 10,000"))) +
+  theme(legend.position="none", axis.ticks.y=element_blank(), axis.text.y=element_text(angle=90, hjust=0.5) )
+ggsave("images/figure-3.png", pic, height=4, width=10)
 ##
 
 ## work with the posterior samples
@@ -128,3 +137,16 @@ pic <- ggplot(pick, aes(x=date, group=gov)) +
   geom_hline(aes(yintercept=yint), data=reflines, color="black") + 
   facet_wrap(vars(type), scales="free_y", ncol=1)
 ggsave(file.path(outdir,"figure-2.tiff"), pic, height=6, width=10, compression="lzw")
+
+pic <- ggplot(pick, aes(x=date, group=gov)) +
+  geom_line(aes(group=interaction(gov,state), y=ppi, linetype=gov), data=bg, alpha=0.5, color="gray") +
+  geom_point(aes(y=marked, shape=marker), size=4) +
+  geom_ribbon(aes(ymin=lb, ymax=ub), color=NA, fill="grey40") +
+  scale_linetype_manual("Protective Policy Index by state",breaks=c("dem","rep"), values=c("solid","longdash"),labels=c("Governor is a Democrat","Governor is a Republican")) + 
+  scale_shape_manual("Average Protective Policy Index",breaks=c("dem","rep"), values=c(6,16),labels=c("Governor is a Democrat","Governor is a Republican")) + 
+  scale_x_date(date_labels="%b %d") +
+  labs(x=element_blank(), y=element_blank()) +
+  geom_hline(aes(yintercept=yint), data=reflines, color="red") + 
+  facet_wrap(vars(type), scales="free_y", ncol=1)
+ggsave("images/figure-2.png", pic, height=6, width=10)
+

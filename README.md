@@ -57,3 +57,12 @@ Shvetsova, Olga, Andrei Zhirnov, Frank Giannelli, Michael Catalano, and Olivia C
 
 */code/make tables.R* summarizes the posterior samples to produce tables
 
+## Illustrations from the paper
+
+** The difference between the simulated case dynamics when the policies are more or less stringent **
+
+![trajectories](images/figure-1.png)
+
+** The dynamics of average policy stringency by state type **
+
+![trajectories](images/figure-2.png)
